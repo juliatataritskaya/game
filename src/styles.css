@@ -1,0 +1,62 @@
+.error-common {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #f7f7f7;
+}
+.error-common.error404 .error-common__img {
+  background: url('/assets/img/error/404.png') center bottom no-repeat;
+}
+.error-common.error-server .error-common__img {
+  background: url('/assets/img/error/server.png') center bottom no-repeat;
+}
+.error-common.error-server .error-common__wrapper {
+  height: 400px;
+}
+.error-common__wrapper {
+  display: flex;
+  justify-content: center;
+  width: 840px;
+  height: 480px;
+}
+@media (min-width: 768px) {
+  .error-common__wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+  .error-common__img {
+    width: 370px;
+    height: 100%;
+  }
+}
+.error-common__error-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 370px;
+  height: 100%;
+  text-align: left;
+}
+.error-common__error-content button {
+  width: 170px;
+  margin-bottom: 0;
+}
+@media (max-width: 767px) {
+  .error-common__error-content {
+    text-align: center;
+  }
+}
+.error-content__header {
+  margin-top: 80px;
+  font-size: 124px;
+  line-height: 124px;
+}
+.error-content__indicator {
+  display: inline-block;
+  padding: 5px 20px 3px;
+  background: #61d079;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
