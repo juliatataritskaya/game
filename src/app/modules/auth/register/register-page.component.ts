@@ -17,6 +17,7 @@ export class RegisterPageComponent  extends ReactiveFormsBaseClass implements On
       email: '',
       password: '',
       username: '',
+      confirmPassword: '',
       term: true
     }, {
       email: {
@@ -25,6 +26,9 @@ export class RegisterPageComponent  extends ReactiveFormsBaseClass implements On
       },
       password: {
         required: 'Password is required.',
+      },
+      confirmPassword : {
+        required: 'Confirmed password is required.',
       },
       username: {
         required: 'Username is required.',
@@ -44,6 +48,7 @@ export class RegisterPageComponent  extends ReactiveFormsBaseClass implements On
       username: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]],
+      confirmPassword: ['', [Validators.required]],
       term: [true, [Validators.requiredTrue]]
     });
 

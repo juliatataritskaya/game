@@ -1,3 +1,20 @@
+body {
+  font-family: "Ubuntu",sans-serif;
+  font-size: 16px;
+}
+
+.brand-style {
+  color: rgb(30, 34, 210);
+  font-family: 'Kaushan Script', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+.form-control {
+  border-radius: 0 !important;
+  font-family: "Ubuntu",sans-serif;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
 .error-common {
   display: flex;
   justify-content: center;
