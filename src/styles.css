@@ -82,3 +82,16 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
+
+
+.btn-primary {
+  color: #fff !important;
+  background-color: #009DA0;
+  border-color: #009DA0;
+}
+
+.btn-success {
+  color: #fff !important;
+  background-color: #0CC27E;
+  border-color: #0CC27E;
+}

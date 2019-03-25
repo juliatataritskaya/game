@@ -18,6 +18,8 @@ import {LogoutComponent} from '../components/logout/logout.component';
 import {HeaderComponent} from '../components/header/header.component';
 import {ChallengesListComponent} from '../components/challenges/list/challenges-list.component';
 import {ChallengesComponent} from '../components/challenges/challenges.component';
+import {NewChallengeComponent} from '../components/challenges/new/new-challenge.component';
+import {ViewChallengeComponent} from '../components/challenges/view/view-challenge.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import {ChallengesComponent} from '../components/challenges/challenges.component
     LogoutComponent,
     HeaderComponent,
     ChallengesListComponent,
-    ChallengesComponent
+    ChallengesComponent,
+    NewChallengeComponent,
+    ViewChallengeComponent
   ],
   imports: [
     CommonModule,
@@ -51,7 +55,9 @@ import {ChallengesComponent} from '../components/challenges/challenges.component
     LogoutComponent,
     HeaderComponent,
     ChallengesListComponent,
-    ChallengesComponent
+    ChallengesComponent,
+    NewChallengeComponent,
+    ViewChallengeComponent
   ],
   providers: [
     AuthGuard,
