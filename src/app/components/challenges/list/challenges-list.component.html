@@ -1,0 +1,17 @@
+<div class="card" *ngFor="let challenge of challengesList">
+  <div class="card-block">
+    <div class="row">
+      <div class="col-3 text-left">
+        <img src="{{challenge.url}}" alt="img">
+        <h2>{{challenge.name}}</h2>
+      </div>
+      <div class="col-7">
+        <h3>{{challenge.title}}</h3>
+        <p>{{challenge.description}}</p>
+      </div>
+      <div class="col-2">
+        <button class="btn btn-raised"><i class="ft-plus"></i></button>
+      </div>
+    </div>
+  </div>
+</div>

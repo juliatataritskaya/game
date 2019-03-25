@@ -18,6 +18,7 @@ import {AuthModule} from './modules/auth/auth.module';
 import {ServicesModule} from './services/services.module';
 import {SharedModule} from './shared/shared.module';
 import {NgHttpLoaderModule} from 'ng-http-loader';
+import {MainModule} from './modules/main/main.module';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -30,6 +31,7 @@ export function createTranslateLoader(http: HttpClient) {
   imports: [
     BrowserAnimationsModule,
     AuthModule,
+    MainModule,
     ServicesModule,
     StoreModule.forRoot({}),
     AppRoutingModule,

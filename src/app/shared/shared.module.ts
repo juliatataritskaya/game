@@ -14,11 +14,19 @@ import {AuthGuard} from './guards/auth.guard';
 import {UnauthorizedGuard} from './guards/unauthorized.guard';
 import {Error404Component} from '../components/error404';
 import {ErrorServerComponent} from '../components/error-server';
+import {LogoutComponent} from '../components/logout/logout.component';
+import {HeaderComponent} from '../components/header/header.component';
+import {ChallengesListComponent} from '../components/challenges/list/challenges-list.component';
+import {ChallengesComponent} from '../components/challenges/challenges.component';
 
 @NgModule({
   declarations: [
     ErrorServerComponent,
     Error404Component,
+    LogoutComponent,
+    HeaderComponent,
+    ChallengesListComponent,
+    ChallengesComponent
   ],
   imports: [
     CommonModule,
@@ -40,6 +48,10 @@ import {ErrorServerComponent} from '../components/error-server';
     FormsModule,
     NgbModule,
     NgxSpinnerModule,
+    LogoutComponent,
+    HeaderComponent,
+    ChallengesListComponent,
+    ChallengesComponent
   ],
   providers: [
     AuthGuard,
