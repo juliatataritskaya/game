@@ -5,8 +5,8 @@ import {BaseHttpService} from './base.http.service';
 
 @Injectable()
 export class AuthApiService extends BaseHttpService {
-  private static loginUrl = environment.serverUrl + '/login';
-  private static registerUrl = environment.serverUrl + '/register';
+  private static loginUrl = environment.serverUrl + '/api/v1/auth/login';
+  private static registerUrl = environment.serverUrl + '/api/v1/users/register';
 
   constructor(protected http: HttpClient) {
     super(http);
@@ -14,7 +14,7 @@ export class AuthApiService extends BaseHttpService {
 
   public postLogin(loginData: any): Promise<any> {
     return new Promise((resolve, reject) => {
-      this.post(AuthApiService.loginUrl, loginData, {})
+      this.post(AuthApiService.loginUrl, {}, loginData)
         .subscribe(result => {
           resolve(result);
         }, error => {
@@ -25,7 +25,7 @@ export class AuthApiService extends BaseHttpService {
 
   public postRegister(registerData: any): Promise<any> {
     return new Promise((resolve, reject) => {
-      this.post(AuthApiService.registerUrl, registerData, {})
+      this.post(AuthApiService.registerUrl, {}, registerData.value)
         .subscribe(result => {
           resolve(result);
         }, error => {

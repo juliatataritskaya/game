@@ -44,12 +44,12 @@ export class LoginPageComponent extends ReactiveFormsBaseClass implements OnInit
   onSubmit() {
     console.log(this.loginForm.value);
     this.router.navigate(['main']);
-    // this.authService.login(this.loginForm.value).then((res) => {
-    //   this.loginForm.reset();
-    //   this.router.navigate(['main'], {relativeTo: this.route.parent});
-    // }, (error) => {
-    //   console.log(error);
-    // });
+    this.authService.login(this.loginForm.value).then((res) => {
+      this.loginForm.reset();
+      this.router.navigate(['main'], {relativeTo: this.route.parent});
+    }, (error) => {
+      console.log(error);
+    });
   }
 
   onForgotPassword() {
