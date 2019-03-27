@@ -31,6 +31,7 @@ export class AuthService {
   public register(registerData: any): Promise<string> {
     return new Promise((resolve, reject) => {
       this.authApi.postRegister(registerData).then(result => {
+        localStorage.setItem('token', JSON.stringify(result));
         resolve(result);
       }, error => {
         reject(error);
