@@ -25,7 +25,7 @@ export class AuthApiService extends BaseHttpService {
 
   public postRegister(registerData: any): Promise<any> {
     return new Promise((resolve, reject) => {
-      this.post(AuthApiService.registerUrl, {}, registerData.value)
+      this.post(AuthApiService.registerUrl, {}, registerData)
         .subscribe(result => {
           resolve(result);
         }, error => {

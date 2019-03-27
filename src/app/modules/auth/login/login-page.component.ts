@@ -16,10 +16,11 @@ export class LoginPageComponent extends ReactiveFormsBaseClass implements OnInit
   constructor(private router: Router, private route: ActivatedRoute, private authService: AuthService,
               private fb: FormBuilder) {
     super({
-      username: '',
+      email: '',
       password: ''
     }, {
-      username: {
+      email: {
+        email: 'Email is invalid.',
         required: 'Username is required.',
       },
       password: {
@@ -34,7 +35,7 @@ export class LoginPageComponent extends ReactiveFormsBaseClass implements OnInit
 
   createLoginForm() {
     this.loginForm = this.fb.group({
-      username: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]],
     });
     this.loginForm.valueChanges.subscribe(data => this.onValueChanged(this.loginForm, data));
@@ -46,7 +47,7 @@ export class LoginPageComponent extends ReactiveFormsBaseClass implements OnInit
     this.authService.login(this.loginForm.value).then(() => {
       this.router.navigate(['main']);
     }, (error) => {
-      console.log(error);
+      console.log(error.status);
     });
   }
 

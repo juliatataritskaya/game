@@ -13,6 +13,7 @@ import {Router} from '@angular/router';
 
 export class RegisterPageComponent  extends ReactiveFormsBaseClass implements OnInit {
   registerForm: FormGroup;
+  messageError: string = '';
 
   constructor(private authService: AuthService, private router: Router) {
     super({
@@ -59,10 +60,16 @@ export class RegisterPageComponent  extends ReactiveFormsBaseClass implements On
   }
 
   onSubmit() {
-    this.authService.register(this.registerForm).then(() => {
+    this.messageError = '';
+    if (this.registerForm.invalid) {
+      return;
+    }
+    this.authService.register(this.registerForm.value).then(() => {
       this.router.navigate(['main']);
     }, (error) => {
-      console.log(error);
+      if (error.status == 409) {
+        this.messageError = 'User with this email already exists.'
+      }
     })
   }
 

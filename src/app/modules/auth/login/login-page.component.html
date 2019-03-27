@@ -18,12 +18,12 @@
               <form novalidate="" [formGroup]="loginForm">
                 <div class="form-group">
                   <div class="col-md-12">
-                    <input type="text" class="form-control" name="inputName" id="inputName" placeholder="Username"
-                           formControlName="username" required>
+                    <input type="text" class="form-control" name="inputEmail" id="inputEmail" placeholder="Email"
+                           formControlName="email" required email>
                   </div>
                   <small class="form-text text-muted danger"
-                         *ngIf="!loginForm.get('username').valid
-          && formErrors.username">{{formErrors.username}}
+                         *ngIf="!loginForm.get('email').valid
+          && formErrors.email">{{formErrors.email}}
                   </small>
                 </div>
 

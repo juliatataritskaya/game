@@ -85,6 +85,10 @@
                          *ngIf="!registerForm.get('term').valid
           && formErrors.term">{{formErrors.term}}
                   </small>
+
+                  <small class="form-text text-muted danger"
+                         *ngIf="messageError">{{messageError}}
+                  </small>
                 </div>
 
                 <div class="form-group">
