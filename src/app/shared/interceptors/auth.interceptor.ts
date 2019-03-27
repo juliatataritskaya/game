@@ -28,7 +28,9 @@ export class TokenInterceptor implements HttpInterceptor {
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpSentEvent | HttpHeaderResponse | HttpProgressEvent | HttpResponse<any> | HttpUserEvent<any>> {
-    const authHeader  = this.auth.getToken() ? 'Bearer ' + this.auth.getToken()['access_token'] : '';
+
+   console.log(this.auth.getToken());
+    const authHeader  = this.auth.getToken() ? 'Bearer ' + this.auth.getToken()['token'] : '';
     this.spinner.show();
 
     return next.handle(this.addToken(req, authHeader)).pipe(

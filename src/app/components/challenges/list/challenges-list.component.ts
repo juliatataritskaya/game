@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {ChallengeService} from '../../../services/challenge.service';
 
 @Component({
   selector: 'app-challenges-list',
@@ -8,21 +9,21 @@ import {Component, OnInit} from '@angular/core';
 export class ChallengesListComponent implements OnInit {
   public challengesList = [];
 
+  constructor(private challengeService: ChallengeService) {
+  }
+
   ngOnInit() {
-    this.challengesList = [
-      {
-        name: 'Ch1',
-        imgUrl: 'link',
-        title: 'Ch-title',
-        description: 'ghfehfuhewuf bhsdbhdv  usduc sdjsfj'
-      },
-      {
-        name: 'Ch2',
-        imgUrl: 'link',
-        title: 'Ch2-title',
-        description: 'ghfehfuhevr ufr brdv usdrjsfj'
-      }
-    ]
+    this.getAllChallenges();
+  }
+
+  public getAllChallenges() {
+    this.challengeService.getAllChalenges().then((res) => {
+      this.challengesList = res;
+    })
+  }
+
+  public addToMyList(giud) {
+    console.log(giud);
   }
 
 }

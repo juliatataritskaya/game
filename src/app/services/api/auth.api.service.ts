@@ -5,8 +5,8 @@ import {BaseHttpService} from './base.http.service';
 
 @Injectable()
 export class AuthApiService extends BaseHttpService {
-  private static loginUrl = environment.serverUrl + '/api/v1/auth/login';
-  private static registerUrl = environment.serverUrl + '/api/v1/users/register';
+  private static loginUrl = environment.serverUrl + 'auth/login';
+  private static registerUrl = environment.serverUrl + 'users/register';
 
   constructor(protected http: HttpClient) {
     super(http);

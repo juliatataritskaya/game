@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  serverUrl: 'https://galaxy-game-service.herokuapp.com'
+  serverUrl: 'https://galaxy-game-service.herokuapp.com/api/v1/'
 };

@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {ChallengeApiService} from './api/challenge.api.service';
+import {reject} from 'q';
 
 @Injectable()
 export class ChallengeService {
@@ -35,6 +36,16 @@ export class ChallengeService {
         reject(error);
       });
     });
+  }
+
+  public  getAllChalenges(): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.challengeApi.getChallenges().then(result => {
+        resolve(result);
+      }, error => {
+        reject(error);
+      });
+    })
   }
 
 }
