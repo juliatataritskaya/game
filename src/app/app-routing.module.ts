@@ -4,27 +4,29 @@ import {AuthRoutes} from './modules/auth/auth.routing';
 import {ErrorServerComponent} from './components/error-server';
 import {Error404Component} from './components/error404';
 import {MainRoutes} from './modules/main/main.routing';
+import {AuthGuard} from './shared/guards/auth.guard';
 
 const appRoutes: Routes = [
   {
     path: '',
-    redirectTo: 'auth',
+    redirectTo: 'main',
     pathMatch: 'full',
+    canActivate: [AuthGuard]
   },
-  ...AuthRoutes,
   ...MainRoutes,
-  // {
-  //   path: 'error-server',
-  //   component: ErrorServerComponent
-  // },
-  // {
-  //   path: '**',
-  //   redirectTo: 'error404'
-  // },
-  // {
-  //   path: 'error404',
-  //   component: Error404Component
-  // }
+  ...AuthRoutes,
+  {
+    path: 'error-server',
+    component: ErrorServerComponent
+  },
+  {
+    path: '**',
+    redirectTo: 'error404'
+  },
+  {
+    path: 'error404',
+    component: Error404Component
+  }
 ];
 
 @NgModule({

@@ -1,4 +1,5 @@
-import {AfterViewChecked, Component} from '@angular/core';
+import {Component} from '@angular/core';
+import {AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -6,5 +7,12 @@ import {AfterViewChecked, Component} from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  placement = 'bottom-right'
+  placement = 'bottom-right';
+
+  constructor(private authService: AuthService) {
+  }
+
+  public logout() {
+    this.authService.logout();
+  }
 }

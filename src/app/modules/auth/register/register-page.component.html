@@ -19,7 +19,10 @@
                 <div class="form-group">
                   <div class="col-md-12">
                     <input type="text" class="form-control" name="inputName" id="inputName" placeholder="Username"
-                           formControlName="username" required>
+                           formControlName="username"
+                           required
+                           appValidateOnBlur
+                           [validateFormControl]="setBlur()">
                   </div>
                   <small class="form-text text-muted danger"
                          *ngIf="!registerForm.get('username').valid
@@ -31,7 +34,9 @@
                 <div class="form-group">
                   <div class="col-md-12">
                     <input type="email" class="form-control" name="inputEmail" id="inputEmail" placeholder="Email"
-                           formControlName="email" required email="">
+                           formControlName="email" required email
+                           appValidateOnBlur
+                           [validateFormControl]="setBlur()">
                   </div>
                   <small class="form-text text-muted danger"
                          *ngIf="!registerForm.get('email').valid
@@ -42,7 +47,9 @@
                 <div class="form-group">
                   <div class="col-md-12">
                     <input type="password" class="form-control" name="inputPass" id="inputPass" placeholder="Password"
-                           formControlName="password" required>
+                           formControlName="password" required
+                           appValidateOnBlur
+                           [validateFormControl]="setBlur()">
                   </div>
                   <small class="form-text text-muted danger"
                          *ngIf="!registerForm.get('password').valid
@@ -54,11 +61,15 @@
                   <div class="col-md-12">
                     <input type="password" class="form-control" name="inputConfirmPass" id="inputConfirmPass"
                            placeholder="Repeat Password"
-                           formControlName="confirmPassword" required>
+                           formControlName="confirmPassword" required
+                           appValidateOnBlur
+                           [validateFormControl]="setBlur()">
                   </div>
                   <small class="form-text text-muted danger"
                          *ngIf="!registerForm.get('confirmPassword').valid
           && formErrors.confirmPassword">{{formErrors.confirmPassword}}
+                  </small>
+                  <small class="form-text text-muted danger" *ngIf="registerForm.errors?.confirm">{{registerForm.errors?.confirm}}
                   </small>
                 </div>
 
@@ -101,4 +112,3 @@
     </div>
   </div>
 </section>
-<!--Registration Page Ends-->

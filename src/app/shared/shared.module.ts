@@ -20,6 +20,7 @@ import {ChallengesListComponent} from '../components/challenges/list/challenges-
 import {ChallengesComponent} from '../components/challenges/challenges.component';
 import {NewChallengeComponent} from '../components/challenges/new/new-challenge.component';
 import {ViewChallengeComponent} from '../components/challenges/view/view-challenge.component';
+import {ValidateOnBlurModule} from './directives/blur-form-control.directives';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import {ViewChallengeComponent} from '../components/challenges/view/view-challen
     FormsModule,
     NgbModule,
     NgxSpinnerModule,
+    ValidateOnBlurModule,
     ToastrModule.forRoot({
       timeOut: 10000,
       positionClass: 'toast-bottom-full-width',
@@ -57,7 +59,8 @@ import {ViewChallengeComponent} from '../components/challenges/view/view-challen
     ChallengesListComponent,
     ChallengesComponent,
     NewChallengeComponent,
-    ViewChallengeComponent
+    ViewChallengeComponent,
+    ValidateOnBlurModule,
   ],
   providers: [
     AuthGuard,

@@ -11,6 +11,7 @@ export class UnauthorizedGuard implements CanActivate {
 
   canActivate(): Observable<boolean> | boolean {
     if (this.authService.isAuthenticated()) {
+      this.router.navigate(['/main']);
       return false;
     } else {
       return true;

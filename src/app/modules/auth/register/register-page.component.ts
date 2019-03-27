@@ -1,7 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../../../services/auth.service';
 import {ReactiveFormsBaseClass} from '../../../shared/classes/reactive-forms.base.class';
+import {ValidateConfirmPassword} from '../../../shared/classes/validators/confirm-password.validator';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-register-page',
@@ -12,7 +14,7 @@ import {ReactiveFormsBaseClass} from '../../../shared/classes/reactive-forms.bas
 export class RegisterPageComponent  extends ReactiveFormsBaseClass implements OnInit {
   registerForm: FormGroup;
 
-  constructor(private authService: AuthService, private fb: FormBuilder) {
+  constructor(private authService: AuthService, private router: Router) {
     super({
       email: '',
       password: '',
@@ -34,7 +36,7 @@ export class RegisterPageComponent  extends ReactiveFormsBaseClass implements On
         required: 'Username is required.',
       },
       term: {
-        requiredtrue: 'You should agree.',
+        required: 'You should agree.',
       },
     });
   }
@@ -44,23 +46,29 @@ export class RegisterPageComponent  extends ReactiveFormsBaseClass implements On
   }
 
   createRegisterForm() {
-    this.registerForm = this.fb.group({
-      username: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required]],
-      confirmPassword: ['', [Validators.required]],
-      term: [true, [Validators.requiredTrue]]
-    });
+    this.registerForm =  new FormGroup({
+      username: new FormControl('', [Validators.required]),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [Validators.required]),
+      confirmPassword: new FormControl('', {validators: Validators.required}),
+      term: new FormControl(true, [Validators.requiredTrue])
+    }, {validators: ValidateConfirmPassword});
 
     this.registerForm.valueChanges.subscribe(data => this.onValueChanged(this.registerForm, data));
     this.onValueChanged(this.registerForm);
   }
 
   onSubmit() {
-    this.authService.register(this.registerForm).then((res) => {
-      this.registerForm.reset();
+    this.authService.register(this.registerForm).then(() => {
+      this.router.navigate(['main']);
     }, (error) => {
       console.log(error);
     })
+  }
+
+  setBlur() {
+    return () => {
+      this.onValueChanged(this.registerForm);
+    };
   }
 }
