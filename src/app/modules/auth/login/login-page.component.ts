@@ -12,6 +12,7 @@ import {ReactiveFormsBaseClass} from '../../../shared/classes/reactive-forms.bas
 
 export class LoginPageComponent extends ReactiveFormsBaseClass implements OnInit {
   loginForm: FormGroup;
+  messageError: string = '';
 
   constructor(private router: Router, private route: ActivatedRoute, private authService: AuthService,
               private fb: FormBuilder) {
@@ -43,11 +44,17 @@ export class LoginPageComponent extends ReactiveFormsBaseClass implements OnInit
   }
 
   onSubmit() {
-    this.router.navigate(['main']);
+    this.messageError = '';
+    if (this.loginForm.invalid) {
+      return;
+    }
     this.authService.login(this.loginForm.value).then(() => {
+      localStorage.setItem('userEmail', this.loginForm.value.email);
       this.router.navigate(['main']);
     }, (error) => {
-      console.log(error.status);
+      if (error.status == 400) {
+        this.messageError = 'Wrong login or password.'
+      }
     });
   }
 
@@ -57,5 +64,11 @@ export class LoginPageComponent extends ReactiveFormsBaseClass implements OnInit
 
   onRegister() {
     this.router.navigate(['registration'], {relativeTo: this.route.parent});
+  }
+
+  setBlur() {
+    return () => {
+      this.onValueChanged(this.loginForm);
+    };
   }
 }

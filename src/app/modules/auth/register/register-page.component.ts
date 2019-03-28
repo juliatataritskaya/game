@@ -65,6 +65,7 @@ export class RegisterPageComponent  extends ReactiveFormsBaseClass implements On
       return;
     }
     this.authService.register(this.registerForm.value).then(() => {
+      localStorage.setItem('userEmail', this.registerForm.value.email);
       this.router.navigate(['main']);
     }, (error) => {
       if (error.status == 409) {

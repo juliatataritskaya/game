@@ -1,18 +1,25 @@
-<div class="card" *ngFor="let challenge of challengesList">
-  <div class="card-block">
-    <div class="row">
-      <div class="col-3 text-left">
-        <img src="{{challenge.url}}" alt="img">
-        <h2>{{challenge.name}}</h2>
-      </div>
-      <div class="col-7">
-        <h3>{{challenge.title}}</h3>
-        <p>{{challenge.description}}</p>
-      </div>
-      <div class="col-2">
-        <button class="btn btn-raised" (click)="addToMyList(challenge.guid)"><i class="ft-plus"></i></button>
+<div class="row mb-3">
+  <div class="col-xl-4 col-lg-4 col-md-12" *ngFor="let challenge of challengesList">
+    <div class="card">
+      <div class="card-body">
+        <div class="card-img">
+          <img src="assets/img/photos/17.jpg" alt="Random first slide" height="auto" width="70%">
+          <div class="challenge-caption">
+            <h3>{{challenge.name}}</h3>
+          </div>
+          <a class="btn btn-floating halfway-fab btn-large gradient-blackberry"
+             (click)="addToMyList(challenge.guid)"><i class="ft-plus"></i></a>
+        </div>
+        <div class="card-block mt-3">
+          <h4 class="card-title">{{challenge.title}}</h4>
+          <p class="card-text">{{challenge.description}}</p>
+          <a [routerLink]="['../challenge/view/', challenge.guid]"><i class="ft-eye"></i></a>
+        </div>
       </div>
     </div>
   </div>
+  <div class="col-12">
+    <a class="btn btn-floating halfway-fab btn-large gradient-blackberry"
+       routerLink="../challenge/new"><i class="ft-plus"></i></a>
+  </div>
 </div>
-<button title="create new" class="btn btn-raised pull-right ml-3" routerLink="../challenge/new"><i class="ft-plus"></i></button>

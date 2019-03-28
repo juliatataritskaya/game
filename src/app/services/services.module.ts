@@ -3,6 +3,8 @@ import {AuthApiService} from './api/auth.api.service';
 import {AuthService} from './auth.service';
 import {ChallengeApiService} from './api/challenge.api.service';
 import {ChallengeService} from './challenge.service';
+import {UserChallengeApiService} from './api/user-challenge.api.service';
+import {UserChallengeService} from './user-challenge.service';
 
 @NgModule({
   imports: [],
@@ -12,7 +14,9 @@ import {ChallengeService} from './challenge.service';
     AuthService,
     AuthApiService,
     ChallengeService,
-    ChallengeApiService
+    ChallengeApiService,
+    UserChallengeService,
+    UserChallengeApiService
   ]
 })
 export class ServicesModule {

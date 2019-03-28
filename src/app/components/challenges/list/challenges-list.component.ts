@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ChallengeService} from '../../../services/challenge.service';
+import {AuthService} from '../../../services/auth.service';
+import {UserChallengeService} from '../../../services/user-challenge.service';
 
 @Component({
   selector: 'app-challenges-list',
@@ -9,7 +11,8 @@ import {ChallengeService} from '../../../services/challenge.service';
 export class ChallengesListComponent implements OnInit {
   public challengesList = [];
 
-  constructor(private challengeService: ChallengeService) {
+  constructor(private challengeService: ChallengeService, private authService: AuthService,
+              private userChallengeService: UserChallengeService) {
   }
 
   ngOnInit() {
@@ -23,7 +26,9 @@ export class ChallengesListComponent implements OnInit {
   }
 
   public addToMyList(giud) {
-    console.log(giud);
+    this.userChallengeService.addChallengeToUser(giud, this.authService.getUserEmail()).then((res) => {
+      console.log(res);
+    })
   }
 
 }

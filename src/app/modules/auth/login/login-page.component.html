@@ -19,7 +19,9 @@
                 <div class="form-group">
                   <div class="col-md-12">
                     <input type="email" class="form-control" name="inputEmail" id="inputEmail" placeholder="Email"
-                           formControlName="email" required email>
+                           formControlName="email" required email
+                           appValidateOnBlur
+                           [validateFormControl]="setBlur()">
                   </div>
                   <small class="form-text text-muted danger"
                          *ngIf="!loginForm.get('email').valid
@@ -30,10 +32,16 @@
                 <div class="form-group">
                   <div class="col-md-12">
                     <input type="password" class="form-control" name="inputPass" id="inputPass" placeholder="Password"
-                           formControlName="password" required>
+                           formControlName="password" required
+                           appValidateOnBlur
+                           [validateFormControl]="setBlur()">
                     <small class="form-text text-muted danger"
                            *ngIf="!loginForm.get('password').valid
           && formErrors.password">{{formErrors.password}}
+                    </small>
+
+                    <small class="form-text text-muted danger"
+                           *ngIf="messageError">{{messageError}}
                     </small>
                   </div>
                 </div>

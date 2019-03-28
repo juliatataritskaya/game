@@ -14,7 +14,7 @@ export class ChallengeApiService extends BaseHttpService {
 
   public postChallenge(challengeData: any): Promise<any> {
     return new Promise((resolve, reject) => {
-      this.post(ChallengeApiService.challengeUrl, challengeData, {})
+      this.post(ChallengeApiService.challengesUrl, {}, challengeData)
         .subscribe(result => {
           resolve(result);
         }, error => {
@@ -34,9 +34,9 @@ export class ChallengeApiService extends BaseHttpService {
     });
   }
 
-  public getChallenge(id: Number): Promise<any> {
+  public getChallenge(guid: Number): Promise<any> {
     return new Promise((resolve, reject) => {
-      this.get(ChallengeApiService.challengeUrl, id, {})
+      this.get(ChallengeApiService.challengesUrl + '/guid/' + guid, {}, {})
         .subscribe(result => {
           resolve(result);
         }, error => {

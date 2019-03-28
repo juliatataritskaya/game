@@ -6,7 +6,9 @@
         <div class="form-group">
           <div class="col-md-12">
             <input type="text" class="form-control" name="inputName" id="inputName" placeholder="Name"
-                   formControlName="name" required>
+                   formControlName="name" required
+                   appValidateOnBlur
+                   [validateFormControl]="setBlur()">
           </div>
           <small class="form-text text-muted danger"
                  *ngIf="!challengeForm.get('name').valid
@@ -17,7 +19,9 @@
         <div class="form-group">
           <div class="col-md-12">
             <input type="text" class="form-control" name="inputTitle" id="inputTitle" placeholder="Title"
-                   formControlName="title" required>
+                   formControlName="title" required
+                   appValidateOnBlur
+                   [validateFormControl]="setBlur()">
             <small class="form-text text-muted danger"
                    *ngIf="!challengeForm.get('title').valid
           && formErrors.title">{{formErrors.title}}
@@ -27,8 +31,11 @@
 
         <div class="form-group">
           <div class="col-md-12">
-            <input type="text" class="form-control" name="inputDescription" id="inputDescription" placeholder="Description"
-                   formControlName="description" required>
+            <textarea type="text" class="form-control" name="inputDescription" id="inputDescription"
+                      placeholder="Description"
+                      formControlName="description" required
+                      appValidateOnBlur
+                      [validateFormControl]="setBlur()"></textarea>
             <small class="form-text text-muted danger"
                    *ngIf="!challengeForm.get('description').valid
           && formErrors.description">{{formErrors.description}}
@@ -36,22 +43,24 @@
           </div>
         </div>
 
-        <div class="form-group">
-          <div class="d-flex flex-row flex-wrap justify-content-center align-items-center">
-            <label for="uploadbtn" class="btn uploadButton m-0">Upload image</label>
-            <input type="file" class="custom-file-input" id="uploadbtn" accept="image/*"
-                   (change)="detectFiles($event)"
-                   formControlName="img">
-          </div>
-          <div class="d-flex flex-row flex-wrap justify-content-center align-items-center" *ngIf="urls.length">
-            <img *ngFor="let url of urls" [src]="url" class="m-3" width="50%">
-          </div>
-        </div>
+        <!--<div class="form-group">-->
+        <!--<div class="d-flex flex-row flex-wrap justify-content-center align-items-center">-->
+        <!--<label for="uploadbtn" class="btn uploadButton m-0">Upload image</label>-->
+        <!--<input type="file" class="custom-file-input" id="uploadbtn" accept="image/*"-->
+        <!--(change)="detectFiles($event)"-->
+        <!--formControlName="img">-->
+        <!--</div>-->
+        <!--<div class="d-flex flex-row flex-wrap justify-content-center align-items-center" *ngIf="urls.length">-->
+        <!--<img *ngFor="let url of urls" [src]="url" class="m-3" width="50%">-->
+        <!--</div>-->
+        <!--</div>-->
 
         <div class="form-group">
           <div class="col-md-12">
             <button class="btn btn-primary mr-2" color="white" routerLink="/main/choice">Back</button>
-            <button class="btn btn-success" color="white" (click)="save(challengeForm)" [disabled]="challengeForm.invalid">Save</button>
+            <button class="btn btn-success" color="white" (click)="save(challengeForm)"
+                    [disabled]="challengeForm.invalid">Save
+            </button>
           </div>
         </div>
 

@@ -1,7 +1,6 @@
-import {EventEmitter, Injectable} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {AuthApiService} from './api/auth.api.service';
-import {HttpClient, HttpParams} from '@angular/common/http';
-import {environment} from '../../environments/environment';
+import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
 
 @Injectable()
@@ -11,6 +10,10 @@ export class AuthService {
 
   public getToken() {
     return JSON.parse(localStorage.getItem('token'));
+  }
+
+  public getUserEmail() {
+    return localStorage.getItem('userEmail');
   }
 
   isAuthenticated(): boolean {

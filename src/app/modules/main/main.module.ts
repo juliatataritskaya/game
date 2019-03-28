@@ -6,6 +6,7 @@ import {MainRoutes} from './main.routing';
 import {SharedModule} from '../../shared/shared.module';
 import {StartComponent} from '../../components/strart/start.component';
 import {ChoiceComponent} from '../../components/choice/choice.component';
+import {UserAccountModule} from '../../components/user-account/user-account.module';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import {ChoiceComponent} from '../../components/choice/choice.component';
   imports: [
     CommonModule,
     SharedModule,
+    UserAccountModule,
     RouterModule.forChild(MainRoutes),
   ],
   providers: []

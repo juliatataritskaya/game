@@ -16,16 +16,16 @@ export class NewChallengeComponent extends ReactiveFormsBaseClass implements OnI
   constructor(private fb: FormBuilder, private router: Router, private challengeService: ChallengeService) {
     super({
       name: '',
-      img: '',
+      // img: '',
       title: '',
       description: ''
     }, {
       name: {
         required: 'Name is required.',
       },
-      img: {
-        required: 'Image is required.',
-      },
+      // img: {
+      //   required: 'Image is required.',
+      // },
       title: {
         required: 'Title is required.',
       },
@@ -43,7 +43,7 @@ export class NewChallengeComponent extends ReactiveFormsBaseClass implements OnI
 
   createChallengeForm() {
     this.challengeForm = this.fb.group({
-      img: ['', [Validators.required]],
+      // img: ['', [Validators.required]],
       name: ['', [Validators.required]],
       title: ['', [Validators.required]],
       description: ['', [Validators.required]]
@@ -57,10 +57,10 @@ export class NewChallengeComponent extends ReactiveFormsBaseClass implements OnI
       return;
     }
     console.log(form.value);
-    // this.challengeService.createChallenge(form.value).then((res) => {
-    //   console.log(res);
-    // });
-    this.router.navigate(['main/choice']);
+    this.challengeService.createChallenge(form.value).then((res) => {
+      console.log(res);
+      this.router.navigate(['main/choice']);
+    });
   }
 
   detectFiles(event) {
@@ -80,6 +80,12 @@ export class NewChallengeComponent extends ReactiveFormsBaseClass implements OnI
     } else {
       console.log('error')
     }
+  }
+
+  setBlur() {
+    return () => {
+      this.onValueChanged(this.challengeForm);
+    };
   }
 
 }

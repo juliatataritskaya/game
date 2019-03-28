@@ -21,6 +21,9 @@ import {ChallengesComponent} from '../components/challenges/challenges.component
 import {NewChallengeComponent} from '../components/challenges/new/new-challenge.component';
 import {ViewChallengeComponent} from '../components/challenges/view/view-challenge.component';
 import {ValidateOnBlurModule} from './directives/blur-form-control.directives';
+import {NewTaskComponent} from '../components/tasks/new/new-task.component';
+import {ViewTaskComponent} from '../components/tasks/view/view-task.component';
+import {TasksComponent} from '../components/tasks/tasks.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,10 @@ import {ValidateOnBlurModule} from './directives/blur-form-control.directives';
     ChallengesListComponent,
     ChallengesComponent,
     NewChallengeComponent,
-    ViewChallengeComponent
+    ViewChallengeComponent,
+    NewTaskComponent,
+    ViewTaskComponent,
+    TasksComponent
   ],
   imports: [
     CommonModule,
@@ -61,6 +67,9 @@ import {ValidateOnBlurModule} from './directives/blur-form-control.directives';
     NewChallengeComponent,
     ViewChallengeComponent,
     ValidateOnBlurModule,
+    NewTaskComponent,
+    ViewTaskComponent,
+    TasksComponent
   ],
   providers: [
     AuthGuard,
